@@ -1,12 +1,8 @@
-from typing import Union
-
+# main.py
 from fastapi import FastAPI
+from activity.router import router as activity_router  
 
 app = FastAPI()
 
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
+# Incluindo o router da atividade com prefixo e tags
+app.include_router(activity_router, prefix="/activity", tags=["hours"])
